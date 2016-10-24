@@ -8,7 +8,7 @@
  */
 class Product
 {
-    const SHOW_BY_DEFAULT = 10;
+    const SHOW_BY_DEFAULT = 3;
 
     public static function getLatestProduct($count = self::SHOW_BY_DEFAULT)
     {
@@ -49,12 +49,14 @@ class Product
 
     }
 
-    public static function getProductsByCategoryId($categoeyId)
+    public static function getProductsByCategoryId($categoeyId, $page = 1)
     {
         $categoeyId = intval($categoeyId);
 
+        $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
+
         $db =  DB::getConnection();
-        $sql = "SELECT * FROM `product` WHERE `status` = 1 AND `category_id` = $categoeyId";
+        $sql = "SELECT * FROM `product` WHERE `status` = 1 AND `category_id` = $categoeyId LIMIT ".self::SHOW_BY_DEFAULT." OFFSET ".$offset;
 
         $result = $db->query($sql);
         $result->setFetchMode(PDO::FETCH_ASSOC);
@@ -71,5 +73,16 @@ class Product
         }
 
         return $productsList;
+    }
+
+    public static function getTotalByCategoryId($categoryId)
+    {
+        if ($categoryId){
+            $db = DB::getConnection();
+            $sql = "SELECT COUNT(`id`) AS `total` FROM `product` WHERE `status` = 1 AND `category_id` = $categoryId";
+            $result = $db->query($sql);
+            $row = $result->fetch();
+            return $row['total'];
+        }
     }
 }

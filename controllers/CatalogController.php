@@ -20,13 +20,17 @@ class CatalogController
         return true;
     }
 
-    public function actionCategory($id)
+    public function actionCategory($id, $page = 1)
     {
         $categories = array();
         $categories = Category::getCategoryList();
 
         $products = array();
-        $products = Product::getProductsByCategoryId($id);
+        $products = Product::getProductsByCategoryId($id, $page);
+
+        $total = Product::getTotalByCategoryId($id);
+
+        $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
 
         require_once ROOT.'/../views/catalog/category.php';
         return true;

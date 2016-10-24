@@ -42,7 +42,7 @@
                         <?php endforeach;?>
 
                     </div><!--features_items-->
-
+                    <?php echo $pagination->get(); ?>
                 </div>
             </div>
         </div>
