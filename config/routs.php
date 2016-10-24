@@ -2,9 +2,13 @@
 /**
  * Created by PhpStorm.
  * User: SVV
- * Date: 21.10.2016
- * Time: 11:05
+ * Date: 24.10.2016
+ * Time: 12:02
  */
 return array(
-    'news' => 'news/index'
+    'news' => 'news/index',
+    'product/([0-9]+)' => 'product/view/1$',
+    'category/([0-9]+)' => 'catalog/category/$1',
+    'catalog' => 'catalog/index',
+    '' => 'site/index'
 );

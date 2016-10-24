@@ -2,15 +2,15 @@
 /**
  * Created by PhpStorm.
  * User: SVV
- * Date: 21.10.2016
- * Time: 11:03
+ * Date: 24.10.2016
+ * Time: 12:00
  */
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 define('ROOT', __DIR__);
 
-require_once (ROOT.'/../components/Router.php');
+require_once ROOT.'/../components/Autoload.php';
 
 $router = new Router();
 $router->run();

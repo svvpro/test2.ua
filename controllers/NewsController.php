@@ -3,8 +3,8 @@
 /**
  * Created by PhpStorm.
  * User: SVV
- * Date: 21.10.2016
- * Time: 11:17
+ * Date: 24.10.2016
+ * Time: 12:03
  */
 class NewsController
 {
