@@ -21,4 +21,24 @@ class CardController
         echo Card::addProducts($id);
         return true;
     }
+
+    public function actionIndex()
+    {
+        $categories = array();
+        $categories = Category::getCategoryList();
+
+        $productsInCart = false;
+        $productsInCart = Card::getProducts();
+
+        if ($productsInCart){
+            $productsIds = array_keys($productsInCart);
+            $products = Product::getProducstByIds($productsIds);
+
+            $totalPrice = Card::getTotalPrice($products);
+        }
+
+        require_once (ROOT.'/../views/cart/index.php');
+        return true;
+    }
+
 }

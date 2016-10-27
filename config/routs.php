@@ -18,5 +18,6 @@ return array(
     'cabinet' => 'cabinet/index',
     'card/add/([0-9]+)' =>'card/add/$1',
     'card/addAjax/([0-9]+)' =>'card/addAjax/$1',
+    'card' => 'card/index',
     '' => 'site/index'
 );

@@ -41,4 +41,28 @@ class Card
             return 0;
         }
     }
+
+    public static function getProducts()
+    {
+        if (isset($_SESSION['products'])){
+            return $_SESSION['products'];
+        }
+
+        return false;
+    }
+
+
+    public static function getTotalPrice($products)
+    {
+        $productsInCard = self::getProducts();
+
+        $total = 0;
+
+        if ($productsInCard){
+            foreach ($products as $item){
+                $total += $item['price'] * $productsInCard[$item['id']];
+            }
+        }
+        return $total;
+    }
 }
