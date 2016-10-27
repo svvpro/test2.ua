@@ -16,5 +16,6 @@ return array(
     'user/logout' => 'user/logout',
     'cabinet/edit' => 'cabinet/edit',
     'cabinet' => 'cabinet/index',
+    'card/add/([0-9]+)' =>'card/add/$1',
     '' => 'site/index'
 );
