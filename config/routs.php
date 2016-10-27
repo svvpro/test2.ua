@@ -17,5 +17,6 @@ return array(
     'cabinet/edit' => 'cabinet/edit',
     'cabinet' => 'cabinet/index',
     'card/add/([0-9]+)' =>'card/add/$1',
+    'card/addAjax/([0-9]+)' =>'card/addAjax/$1',
     '' => 'site/index'
 );

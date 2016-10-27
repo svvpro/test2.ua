@@ -25,6 +25,8 @@ class Card
         }
 
         $_SESSION['products'] = $productsInCard;
+
+        return self::countItems();
     }
 
     public static function countItems()

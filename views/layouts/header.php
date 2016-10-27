@@ -22,6 +22,10 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/template/images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/template/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/template/images/ico/apple-touch-icon-57-precomposed.png">
+    <script
+        src="https://code.jquery.com/jquery-1.12.4.js"
+        integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+        crossorigin="anonymous"></script>
 </head><!--/head-->
 
 <body>
@@ -60,7 +64,7 @@
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i> <span>(<?php echo Card::countItems(); ?>)</span>Корзина</a></li>
+                            <li><a href="#"><i class="fa fa-shopping-cart"></i> <span id="card-count"></span>Корзина</a></li>
                             <?php if (!User::isGuest()): ?>
                             <li><a href="/cabinet"><i class="fa fa-user"></i> Аккаунт</a></li>
                             <li><a href="/user/logout"><i class="fa fa-unlock"></i> Выход</a></li>
@@ -105,4 +109,14 @@
         </div>
     </div><!--/header-bottom-->
 
+    <script>
+        $(document).ready(function () {
+           $(".add-to-cart").click(function () {
+              var id = $(this).attr("data-id");
+               $.post("/card/addAjax/"+id, {}, function (data) {
+                  $("#card-count").html(data);
+               });
+           });
+        });
+    </script>
 </header><!--/header-->

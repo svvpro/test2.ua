@@ -15,4 +15,10 @@ class CardController
         $refferer = $_SERVER['HTTP_REFERER'];
         header("Location: $refferer");
     }
+
+    public function actionAddAjax($id)
+    {
+        echo Card::addProducts($id);
+        return true;
+    }
 }
